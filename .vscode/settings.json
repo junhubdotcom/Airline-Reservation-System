@@ -1,0 +1,9 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "NeededModules/mysql-connector-j-9.1.0.jar",
+        "NeededModules/AbsoluteLayout-RELEASE220.jar",
+        "NeededModules/jcalendar-1.4.jar",
+        "NeededModules/swing-layout-1.0.4.jar"
+    ]
+}
