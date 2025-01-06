@@ -170,8 +170,8 @@ public class ChangePasswordDialog extends javax.swing.JDialog {
         } else if (!newpwd.equals(confirm)) {
             JOptionPane.showMessageDialog(null, "New password does not match", "Notification",
                     JOptionPane.ERROR_MESSAGE);
-        } else if (!newpwd.matches(".*[A-Z].*")) {
-            JOptionPane.showMessageDialog(null, "Password must contain at least one uppercase letter", "Notification",
+        } else if (newpwd.length() < 8) {
+            JOptionPane.showMessageDialog(null, "Password must be at least 8 characters", "Notification",
                     JOptionPane.ERROR_MESSAGE);
             return;
         } else {
@@ -180,11 +180,11 @@ public class ChangePasswordDialog extends javax.swing.JDialog {
                 this.PWDlength = confirm.length();
                 JOptionPane.showMessageDialog(
                         null,
-                        "Đổi mật khẩu thành công",
-                        "Thông Báo",
+                        "Password changed successfully",
+                        "Notification",
                         JOptionPane.INFORMATION_MESSAGE);
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Lỗi khi đổi mật khẩu: " + e.getMessage(), "Thông Báo",
+                JOptionPane.showMessageDialog(null, "Error changing password: " + e.getMessage(), "Notification",
                         JOptionPane.ERROR_MESSAGE);
             }
             dispose();
