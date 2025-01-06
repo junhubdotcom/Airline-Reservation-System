@@ -146,21 +146,21 @@ public class ChangePasswordDialog extends javax.swing.JDialog {
         String confirm = confirmPWD.getText();
 
         if (!current.equals(pwsd)) {
-            JOptionPane.showMessageDialog(null, "Mật khẩu hiện tại không đúng", "Thông Báo", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Current password is incorrect", "Notification", JOptionPane.ERROR_MESSAGE);
         } else if (!newpwd.equals(confirm)) {
-            JOptionPane.showMessageDialog(null, "Mật khẩu mới không khớp", "Thông Báo", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "New password does not match", "Notification", JOptionPane.ERROR_MESSAGE);
         } else {
             try {
                 Users.updateUserPassword(userID, confirm);
                 this.PWDlength = confirm.length();
                 JOptionPane.showMessageDialog(
                         null,
-                        "Đổi mật khẩu thành công",
-                        "Thông Báo",
+                        "Password changed successfully",
+                        "Notification",
                         JOptionPane.INFORMATION_MESSAGE
                 );
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Lỗi khi đổi mật khẩu: " + e.getMessage(), "Thông Báo", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error changing password: " + e.getMessage(), "Notification", JOptionPane.ERROR_MESSAGE);
             }
             dispose();
         }
