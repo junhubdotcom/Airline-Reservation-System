@@ -1,10 +1,11 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 import DataHandle.constants.CommonConstants;
 import UI.main.Login;
 
-public class MainApp {
+public class Application {
     public static void main(String[] args) throws SQLException {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
