@@ -337,11 +337,6 @@ public class LoginAdmin extends javax.swing.JFrame {
 
     }//GEN-LAST:event_LoginButtonActionPerformed
 
-    private void showPanel(String panelName) {
-        CardLayout layout = (CardLayout) getContentPane().getLayout();
-        layout.show(getContentPane(), panelName);
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AdminLogin;
     private javax.swing.JLabel BrandName;
