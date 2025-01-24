@@ -52,119 +52,54 @@ public class Flights {
     static String[] cities = { "VCL", "THD", "VDH", "DIN", "TBB", "PXU", "BMV", "VKG", "CAH", "VCS",
             "HAN", "SGN", "PQC", "DAD", "CXR", "HUI", "VDO", "VCA", "VII", "UIH", "HPH" };
 
-            public static boolean insertFlight(Timestamp departureTime, int planeID,
+    public static boolean insertFlight(Timestamp departureTime, int planeID,
             String arrivalCity, String updatedName) {
-String insertFlightSQL = "INSERT INTO " + CommonConstants.DB_FLIGHTS_TABLE +
-" (DepartureTime, ArrivalTime, PlaneID, DepartureAirportID, ArrivalAirportID, UpdatedBy, UpdatedDate) " +
-"VALUES (?, ?, ?, ?, ?, ?, ?)";
+        try (Connection connection = DriverManager.getConnection(
+                CommonConstants.DB_URL, CommonConstants.DB_USERNAME, CommonConstants.DB_PASSWORD)) {
 
-String checkQuery = """
-SELECT 1
-FROM airline.flights
-WHERE PlaneID = ?
-AND DATE(DepartureTime) = DATE(?);
-""";
+            // Check if a flight already exists for the given plane and departure time
+            if (!isFlightAvailable(connection, planeID, departureTime)) {
+                System.err.println("Flight already exists for the given plane and departure time.");
+                return false;
+            }
 
+            // Retrieve admin ID
+            Integer adminID = getAdminID(connection, updatedName);
+            if (adminID == null) {
+                System.err.println("Admin not found.");
+                return false;
+            }
 
-try (Connection connection = DriverManager.getConnection(
-CommonConstants.DB_URL, CommonConstants.DB_USERNAME, CommonConstants.DB_PASSWORD);
+            // Get departure airport details
+            Airport departureAirport = getDepartureAirport(connection);
+            if (departureAirport == null) {
+                System.err.println("Departure airport not found.");
+                return false;
+            }
 
-PreparedStatement checkStmt = connection.prepareStatement(checkQuery);
+            // Get arrival airport details
+            Airport arrivalAirport = getArrivalAirport(connection, arrivalCity);
+            if (arrivalAirport == null) {
+                System.err.println("Arrival airport not found.");
+                return false;
+            }
 
-PreparedStatement adminIDStmt = connection.prepareStatement(
-"SELECT AdminID FROM " + CommonConstants.DB_ADMIN_TABLE + " WHERE AdminName = ?");
+            // Calculate travel time
+            int travelTime = getTravelTime(departureAirport.code, arrivalAirport.code);
+            if (travelTime <= 0) {
+                System.err.println("No direct route available between the airports.");
+                return false;
+            }
 
-PreparedStatement departureAirportStmt = connection.prepareStatement(
-"SELECT a.AirportID, a.AirportCode FROM " + CommonConstants.DB_AIRPORTS_TABLE + " a " +
-  "JOIN " + CommonConstants.DB_PLANES_TABLE + " p ON p.LocationID = a.AirportID ");
-
-PreparedStatement arrivalAirportStmt = connection.prepareStatement(
-"SELECT AirportID, AirportCode FROM " + CommonConstants.DB_AIRPORTS_TABLE + " WHERE City = ?");
-PreparedStatement insertFlightStmt = connection.prepareStatement(insertFlightSQL)) {
-
-checkStmt.setInt(1, planeID);
-checkStmt.setTimestamp(2, departureTime);
-ResultSet rs = checkStmt.executeQuery();
-
-if (rs.next()) {
-return false;
-}
-
-adminIDStmt.setString(1, updatedName);
-ResultSet adminResultSet = adminIDStmt.executeQuery();
-Integer adminID = null;
-if (adminResultSet.next()) {
-adminID = adminResultSet.getInt("AdminID");
-} else {
-System.err.println("Admin not found");
-return false;
-}
-
-ResultSet departureResultSet = departureAirportStmt.executeQuery();
-int departureAirportID = -1;
-String departureAirportCode = "";
-if (departureResultSet.next()) {
-departureAirportID = departureResultSet.getInt("AirportID");
-departureAirportCode = departureResultSet.getString("AirportCode");
-} else {
-System.err.println("Departure airport not found");
-return false;
-}
-
-arrivalAirportStmt.setString(1, arrivalCity);
-ResultSet arrivalResultSet = arrivalAirportStmt.executeQuery();
-int arrivalAirportID = -1;
-String arrivalAirportCode = "";
-if (arrivalResultSet.next()) {
-arrivalAirportID = arrivalResultSet.getInt("AirportID");
-arrivalAirportCode = arrivalResultSet.getString("AirportCode");
-} else {
-System.err.println("Arrival airport not found");
-return false;
-}
-int x = -1;
-int y = -1;
-for (int i=0; i<cities.length; i++) {
-if (departureAirportCode.equals(cities[i])) x = i;
-}
-for (int i=0; i<cities.length; i++) {
-if (arrivalAirportCode.equals(cities[i])) y = i;
-}
-
-if (x == -1 ||  y == -1) {
-System.err.println("City not found in travelTimes");
-return false;
-}
-
-int travelTime = travelTimes[x][y];
-if (travelTime == -1 || travelTime == 0) {
-System.err.println("No direct route available between ");
-return false;
-}
-
-Timestamp arrivalTime = new Timestamp(departureTime.getTime() + travelTime * 60 * 1000);
-
-insertFlightStmt.setTimestamp(1, departureTime);
-insertFlightStmt.setTimestamp(2, arrivalTime);
-insertFlightStmt.setInt(3, planeID);
-insertFlightStmt.setInt(4, departureAirportID);
-insertFlightStmt.setInt(5, arrivalAirportID);
-
-if (adminID != null) {
-insertFlightStmt.setInt(6, adminID);
-} else {
-insertFlightStmt.setNull(6, java.sql.Types.INTEGER);
-}
-
-insertFlightStmt.setDate(7, new java.sql.Date(System.currentTimeMillis()));
-insertFlightStmt.executeUpdate();
-return true;
-
-} catch (SQLException e) {
-e.printStackTrace();
-return false;
-}
-}
+            // Insert the flight record
+            Timestamp arrivalTime = new Timestamp(departureTime.getTime() + travelTime * 60 * 1000);
+            return insertFlightRecord(connection, departureTime, arrivalTime, planeID,
+                    departureAirport.id, arrivalAirport.id, adminID);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
     private static boolean isFlightAvailable(Connection connection, int planeID, Timestamp departureTime)
             throws SQLException {
