@@ -12,8 +12,6 @@ import DataHandle.Data.*;
  * @author ADMIN
  */
 public class LoginAdmin extends javax.swing.JFrame {
-        private javax.swing.JPanel pnContainer;
-        private javax.swing.JLabel lbl_quen_mat_khau;
 
     /**
      * Creates new form LoginAdmin
@@ -31,6 +29,27 @@ public class LoginAdmin extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        final javax.swing.JPanel AdminLogin;
+        final javax.swing.JLabel BrandName;
+        final javax.swing.JLabel CopyRight;
+        final javax.swing.JLabel EmailLabel;
+        final javax.swing.JPanel ForgotPassword;
+        final javax.swing.JPanel Left;
+        final javax.swing.JButton LoginButton;
+        final javax.swing.JLabel LoginLabel;
+        final javax.swing.JLabel PasswordLabel;
+        final javax.swing.JPanel Right;
+        final javax.swing.JButton btn_huy;
+        final javax.swing.JButton btn_xac_nhan;
+        final javax.swing.JTextField email_field;
+        final javax.swing.JLabel icon_quen_mat_khau;
+        final javax.swing.JLabel lbl_email;
+        final javax.swing.JLabel lbl_quen_mat_khau;
+        final javax.swing.JLabel lbl_username;
+        final javax.swing.JLabel logo;
+        final javax.swing.JPanel pnContainer;
+        final javax.swing.JPanel pnTitle;
+        final javax.swing.JTextField username_field;
         
         
 
@@ -304,6 +323,7 @@ public class LoginAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginButtonActionPerformed() {//GEN-FIRST:event_LoginButtonActionPerformed
+        
         String getEmail = EmailField.getText().trim();
         String getAdminPassword = new String(PasswordField.getPassword()).trim();
 
@@ -343,29 +363,9 @@ public class LoginAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel AdminLogin;
-    private javax.swing.JLabel BrandName;
-    private javax.swing.JLabel CopyRight;
     private javax.swing.JTextField EmailField;
-    private javax.swing.JLabel EmailLabel;
-    private javax.swing.JPanel ForgotPassword;
-    private javax.swing.JPanel Left;
-    private javax.swing.JButton LoginButton;
-    private javax.swing.JLabel LoginLabel;
     private javax.swing.JPasswordField PasswordField;
-    private javax.swing.JLabel PasswordLabel;
-    private javax.swing.JPanel Right;
-    private javax.swing.JButton btn_huy;
-    private javax.swing.JButton btn_xac_nhan;
-    private javax.swing.JTextField email_field;
-    private javax.swing.JLabel icon_quen_mat_khau;
-    private javax.swing.JLabel lbl_email;
-    
-    private javax.swing.JLabel lbl_username;
-    private javax.swing.JLabel logo;
-    
-    private javax.swing.JPanel pnTitle;
-    private javax.swing.JTextField username_field;
+   
     // End of variables declaration//GEN-END:variables
 }
 
