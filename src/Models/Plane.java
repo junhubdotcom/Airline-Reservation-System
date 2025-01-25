@@ -8,8 +8,6 @@ public class Plane {
     private int planeID;
     private String Model;
     private int Seats;
-    private int UpdatedBy;
-    private Date UpdatedDate;
 
     public Plane(String Model, int Seats) {
         this.Model = Model;
@@ -19,8 +17,6 @@ public class Plane {
     public Plane(String Model, int Seats, int UpdatedBy, Date UpdatedDate) {
         this.Model = Model;
         this.Seats = Seats;
-        this.UpdatedBy = UpdatedBy;
-        this.UpdatedDate = UpdatedDate;
     }
 
     public int getPlaneID() {

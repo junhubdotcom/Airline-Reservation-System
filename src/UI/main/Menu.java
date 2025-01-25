@@ -151,7 +151,7 @@ public class Menu extends javax.swing.JFrame {
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
+                formWindowOpened();
             }
         });
 
@@ -164,7 +164,7 @@ public class Menu extends javax.swing.JFrame {
         lbl_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Icon/menu.png"))); // NOI18N
         lbl_menu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbl_menuMouseClicked(evt);
+                lbl_menuMouseClicked();
             }
         });
 
@@ -195,7 +195,7 @@ public class Menu extends javax.swing.JFrame {
         lblCloseMenu.setText("X");
         lblCloseMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblCloseMenuMouseClicked(evt);
+                lblCloseMenuMouseClicked();
             }
         });
 
@@ -240,7 +240,7 @@ public class Menu extends javax.swing.JFrame {
         lblHoSo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 try {
-                    lblHoSoMouseClicked(evt);
+                    lblHoSoMouseClicked();
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
@@ -253,7 +253,7 @@ public class Menu extends javax.swing.JFrame {
         lblTrangChu.setText("Trang Chủ");
         lblTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblTrangChuMouseClicked(evt);
+                lblTrangChuMouseClicked();
             }
         });
 
@@ -262,7 +262,7 @@ public class Menu extends javax.swing.JFrame {
         lblDatVe.setText("Đặt vé");
         lblDatVe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblDatVeMouseClicked(evt);
+                lblDatVeMouseClicked();
             }
         });
 
@@ -271,7 +271,7 @@ public class Menu extends javax.swing.JFrame {
         lblVeCuaToi.setText("Vé của tôi");
         lblVeCuaToi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblVeCuaToiMouseClicked(evt);
+                lblVeCuaToiMouseClicked();
             }
         });
 
@@ -280,7 +280,7 @@ public class Menu extends javax.swing.JFrame {
         label_dang_xuat.setText("Đăng Xuất");
         label_dang_xuat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                label_dang_xuatMouseClicked(evt);
+                label_dang_xuatMouseClicked();
             }
         });
 
@@ -379,7 +379,7 @@ public class Menu extends javax.swing.JFrame {
         mot_chieu.setText("Một chiều");
         mot_chieu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mot_chieuActionPerformed(evt);
+                mot_chieuActionPerformed();
             }
         });
 
@@ -387,7 +387,7 @@ public class Menu extends javax.swing.JFrame {
         diem_den.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quang Nam", "Thanh Hoa", "Quang Binh", "Dien Bien", "Phu Yen", "Gia Lai", "Dak Lak", "Kien Giang", "Ca Mau", "Ba Ria – Vung Tau", "Ha Noi", "Thanh pho Ho Chi Minh", "Kien Giang", "Da Nang", "Khanh Hoa", "Thua Thien Hue", "Quang Ninh", "Can Tho", "Nghe An", "Binh Dinh", "Hai Phong", "Lam Dong" }));
         diem_den.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                diem_denActionPerformed(evt);
+                diem_denActionPerformed();
             }
         });
 
@@ -396,7 +396,7 @@ public class Menu extends javax.swing.JFrame {
         nut_tim_chuyen_bay.setText("Tìm chuyến bay");
         nut_tim_chuyen_bay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nut_tim_chuyen_bayActionPerformed(evt);
+                nut_tim_chuyen_bayActionPerformed();
             }
         });
 
@@ -404,7 +404,7 @@ public class Menu extends javax.swing.JFrame {
         diem_khoi_hanh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quang Nam", "Thanh Hoa", "Quang Binh", "Dien Bien", "Phu Yen", "Gia Lai", "Dak Lak", "Kien Giang", "Ca Mau", "Ba Ria – Vung Tau", "Ha Noi", "Thanh pho Ho Chi Minh", "Kien Giang", "Da Nang", "Khanh Hoa", "Thua Thien Hue", "Quang Ninh", "Can Tho", "Nghe An", "Binh Dinh", "Hai Phong", "Lam Dong" }));
         diem_khoi_hanh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                diem_khoi_hanhActionPerformed(evt);
+                diem_khoi_hanhActionPerformed();
             }
         });
 
@@ -560,7 +560,7 @@ public class Menu extends javax.swing.JFrame {
         ChangeMailButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
-                    ChangeMailButtonActionPerformed(evt);
+                    ChangeMailButtonActionPerformed();
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
@@ -571,7 +571,7 @@ public class Menu extends javax.swing.JFrame {
         ChangePasswordButton.setText("ĐỔI MẬT KHẨU");
         ChangePasswordButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ChangePasswordButtonActionPerformed(evt);
+                ChangePasswordButtonActionPerformed();
             }
         });
 
@@ -582,7 +582,7 @@ public class Menu extends javax.swing.JFrame {
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
-                    jButton3ActionPerformed(evt);
+                    jButton3ActionPerformed();
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
@@ -783,42 +783,42 @@ public class Menu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblCloseMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMenuMouseClicked
+    private void lblCloseMenuMouseClicked() {//GEN-FIRST:event_lblCloseMenuMouseClicked
         closeMenu();
     }//GEN-LAST:event_lblCloseMenuMouseClicked
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+    private void formWindowOpened() {//GEN-FIRST:event_formWindowOpened
         jplSlideMenu.setSize(0, y);
         x = 0;
     }//GEN-LAST:event_formWindowOpened
 
-    private void lblTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTrangChuMouseClicked
+    private void lblTrangChuMouseClicked() {//GEN-FIRST:event_lblTrangChuMouseClicked
         cardTrangChu.setVisible(true);
         cardDatVe.setVisible(false);
         cardVeCuaToi.setVisible(false);
         cardHoSo.setVisible(false);
     }//GEN-LAST:event_lblTrangChuMouseClicked
 
-    private void lblDatVeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDatVeMouseClicked
+    private void lblDatVeMouseClicked() {//GEN-FIRST:event_lblDatVeMouseClicked
         cardTrangChu.setVisible(false);
         cardDatVe.setVisible(true);
         cardVeCuaToi.setVisible(false);
         cardHoSo.setVisible(false);
     }//GEN-LAST:event_lblDatVeMouseClicked
 
-    private void mot_chieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mot_chieuActionPerformed
+    private void mot_chieuActionPerformed() {//GEN-FIRST:event_mot_chieuActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mot_chieuActionPerformed
 
-    private void diem_khoi_hanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diem_khoi_hanhActionPerformed
+    private void diem_khoi_hanhActionPerformed() {//GEN-FIRST:event_diem_khoi_hanhActionPerformed
 
     }//GEN-LAST:event_diem_khoi_hanhActionPerformed
 
-    private void diem_denActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diem_denActionPerformed
+    private void diem_denActionPerformed() {//GEN-FIRST:event_diem_denActionPerformed
 
     }//GEN-LAST:event_diem_denActionPerformed
 
-    private void nut_tim_chuyen_bayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nut_tim_chuyen_bayActionPerformed
+    private void nut_tim_chuyen_bayActionPerformed() {//GEN-FIRST:event_nut_tim_chuyen_bayActionPerformed
 
         FlightFoundedPane.removeAll();
         FlightFoundedPane.revalidate();
@@ -843,7 +843,7 @@ public class Menu extends javax.swing.JFrame {
         FlightFoundedPane.repaint();
     }//GEN-LAST:event_nut_tim_chuyen_bayActionPerformed
 
-    private void lblVeCuaToiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVeCuaToiMouseClicked
+    private void lblVeCuaToiMouseClicked() {//GEN-FIRST:event_lblVeCuaToiMouseClicked
         cardTrangChu.setVisible(false);
         cardVeCuaToi.setVisible(true);
         cardDatVe.setVisible(false);
@@ -871,7 +871,7 @@ public class Menu extends javax.swing.JFrame {
         MyTicketPane.repaint();
     }
 
-    private void lblHoSoMouseClicked(java.awt.event.MouseEvent evt) throws SQLException {//GEN-FIRST:event_lblHoSoMouseClicked
+    private void lblHoSoMouseClicked() throws SQLException {//GEN-FIRST:event_lblHoSoMouseClicked
         cardTrangChu.setVisible(false);
         cardHoSo.setVisible(true);
         cardVeCuaToi.setVisible(false);
@@ -887,11 +887,11 @@ public class Menu extends javax.swing.JFrame {
 
     }
 
-    private void lbl_menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_menuMouseClicked
+    private void lbl_menuMouseClicked() {//GEN-FIRST:event_lbl_menuMouseClicked
         openMenu();
     }//GEN-LAST:event_lbl_menuMouseClicked
 
-    private void label_dang_xuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_dang_xuatMouseClicked
+    private void label_dang_xuatMouseClicked() {//GEN-FIRST:event_label_dang_xuatMouseClicked
         dispose();
         Login l = new Login();
         l.setVisible(true);
@@ -899,7 +899,7 @@ public class Menu extends javax.swing.JFrame {
         l.setLocationRelativeTo(null);
     }//GEN-LAST:event_label_dang_xuatMouseClicked
 
-    private void ChangeMailButtonActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_ChangeMailButtonActionPerformed
+    private void ChangeMailButtonActionPerformed() throws SQLException {//GEN-FIRST:event_ChangeMailButtonActionPerformed
 
         ChangeEmail e = new ChangeEmail(this, gmailField.getText(), userID);
         e.setLocationRelativeTo(null);
@@ -907,7 +907,7 @@ public class Menu extends javax.swing.JFrame {
         gmailField.setText(e.getNewEmail());
     }//GEN-LAST:event_ChangeMailButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButton3ActionPerformed() throws SQLException {//GEN-FIRST:event_jButton3ActionPerformed
 
         String password = showDeleteAccountDialog();
         if (password != null) {
@@ -924,7 +924,7 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void ChangePasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChangePasswordButtonActionPerformed
+    private void ChangePasswordButtonActionPerformed() {//GEN-FIRST:event_ChangePasswordButtonActionPerformed
 
         ChangePasswordDialog P = new ChangePasswordDialog(this, userID);
         P.setLocationRelativeTo(null);

@@ -50,7 +50,7 @@ public class addFlight extends javax.swing.JFrame {
         jButton1.setText("Add");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton1ActionPerformed();
             }
         });
 
@@ -116,7 +116,7 @@ public class addFlight extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed() {//GEN-FIRST:event_jButton1ActionPerformed
         String getPlaneID = planeID.getText().trim();
         String getAdmin = updatedName.getText().trim();
         String arrivalCity = Flights.chuanHoa(arrival.getText().trim());
