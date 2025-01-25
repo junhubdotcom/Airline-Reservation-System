@@ -18,7 +18,6 @@ import javax.swing.*;
 
 public class Login extends javax.swing.JFrame {
     private AirlineSystem manager = new AirlineSystem();
-    private javax.swing.JPanel loginPanel;
 
     /**
      * Creates new form Login
@@ -754,5 +753,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField signupEmail;
     private javax.swing.JPasswordField signupPassword;
     private javax.swing.JTextField signupUsername;
+    javax.swing.JPanel loginPanel = new JPanel();
     // End of variables declaration//GEN-END:variables
 }
