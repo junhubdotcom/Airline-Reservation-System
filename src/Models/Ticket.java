@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Ticket {
+    
     private int ticketID;
     private String TicketCode;
     private Passenger passenger;

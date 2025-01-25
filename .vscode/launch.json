@@ -1,0 +1,147 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Java Program",
+            "request": "launch",
+            "mainClass": "main",
+            "classpath": ["NeededModules/*"]
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "AdminOnly",
+            "request": "launch",
+            "mainClass": "AdminOnly",
+            "projectName": "Airline-Reservation-System_58a9612c"
+        },
+        {
+            "type": "java",
+            "name": "addAirport",
+            "request": "launch",
+            "mainClass": "UI.Admin.Plugin.addAirport",
+            "projectName": "Airline-Reservation-System_58a9612c"
+        },
+        {
+            "type": "java",
+            "name": "addFlight",
+            "request": "launch",
+            "mainClass": "UI.Admin.Plugin.addFlight",
+            "projectName": "Airline-Reservation-System_58a9612c"
+        },
+        {
+            "type": "java",
+            "name": "addPlane",
+            "request": "launch",
+            "mainClass": "UI.Admin.Plugin.addPlane",
+            "projectName": "Airline-Reservation-System_58a9612c"
+        },
+        {
+            "type": "java",
+            "name": "deleteAirport",
+            "request": "launch",
+            "mainClass": "UI.Admin.Plugin.deleteAirport",
+            "projectName": "Airline-Reservation-System_58a9612c"
+        },
+        {
+            "type": "java",
+            "name": "deleteFlight",
+            "request": "launch",
+            "mainClass": "UI.Admin.Plugin.deleteFlight",
+            "projectName": "Airline-Reservation-System_58a9612c"
+        },
+        {
+            "type": "java",
+            "name": "deletePlane",
+            "request": "launch",
+            "mainClass": "UI.Admin.Plugin.deletePlane",
+            "projectName": "Airline-Reservation-System_58a9612c"
+        },
+        {
+            "type": "java",
+            "name": "editAirport",
+            "request": "launch",
+            "mainClass": "UI.Admin.Plugin.editAirport",
+            "projectName": "Airline-Reservation-System_58a9612c"
+        },
+        {
+            "type": "java",
+            "name": "editFlight",
+            "request": "launch",
+            "mainClass": "UI.Admin.Plugin.editFlight",
+            "projectName": "Airline-Reservation-System_58a9612c"
+        },
+        {
+            "type": "java",
+            "name": "editPlane",
+            "request": "launch",
+            "mainClass": "UI.Admin.Plugin.editPlane",
+            "projectName": "Airline-Reservation-System_58a9612c"
+        },
+        {
+            "type": "java",
+            "name": "searchAirport",
+            "request": "launch",
+            "mainClass": "UI.Admin.Plugin.searchAirport",
+            "projectName": "Airline-Reservation-System_58a9612c"
+        },
+        {
+            "type": "java",
+            "name": "searchFlight",
+            "request": "launch",
+            "mainClass": "UI.Admin.Plugin.searchFlight",
+            "projectName": "Airline-Reservation-System_58a9612c"
+        },
+        {
+            "type": "java",
+            "name": "searchPlane",
+            "request": "launch",
+            "mainClass": "UI.Admin.Plugin.searchPlane",
+            "projectName": "Airline-Reservation-System_58a9612c"
+        },
+        {
+            "type": "java",
+            "name": "backupMain",
+            "request": "launch",
+            "mainClass": "UI.Admin.backupMain",
+            "projectName": "Airline-Reservation-System_58a9612c"
+        },
+        {
+            "type": "java",
+            "name": "testUI",
+            "request": "launch",
+            "mainClass": "UI.Admin.testUI",
+            "projectName": "Airline-Reservation-System_58a9612c"
+        },
+        {
+            "type": "java",
+            "name": "Icons",
+            "request": "launch",
+            "mainClass": "UI.main.CustomPlugin.Icons",
+            "projectName": "Airline-Reservation-System_58a9612c"
+        },
+        {
+            "type": "java",
+            "name": "RoundedBorder",
+            "request": "launch",
+            "mainClass": "UI.main.CustomPlugin.RoundedBorder",
+            "projectName": "Airline-Reservation-System_58a9612c"
+        },
+        {
+            "type": "java",
+            "name": "main",
+            "request": "launch",
+            "mainClass": "main",
+            "projectName": "Airline-Reservation-System_58a9612c"
+        }
+    ]
+}
