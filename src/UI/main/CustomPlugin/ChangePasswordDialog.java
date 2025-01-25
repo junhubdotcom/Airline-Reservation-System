@@ -63,7 +63,7 @@ public class ChangePasswordDialog extends javax.swing.JDialog {
 
         confirmPWD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirmPWDActionPerformed(evt);
+                confirmPWDActionPerformed();
             }
         });
 
@@ -72,14 +72,14 @@ public class ChangePasswordDialog extends javax.swing.JDialog {
         Change.setText("Change");
         Change.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ChangeActionPerformed(evt);
+                ChangeActionPerformed();
             }
         });
 
         Cancel.setText("Cancel");
         Cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelActionPerformed(evt);
+                CancelActionPerformed();
             }
         });
 
@@ -149,11 +149,11 @@ public class ChangePasswordDialog extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void confirmPWDActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_confirmPWDActionPerformed
+    private void confirmPWDActionPerformed() {//GEN-FIRST:event_confirmPWDActionPerformed
         // TODO add your handling code here:
     }// GEN-LAST:event_confirmPWDActionPerformed
 
-    private void ChangeActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ChangeActionPerformed
+    private void ChangeActionPerformed() {//GEN-FIRST:event_ChangeActionPerformed
 
         String pwsd;
         try {
@@ -171,8 +171,8 @@ public class ChangePasswordDialog extends javax.swing.JDialog {
         } else if (!newpwd.equals(confirm)) {
             JOptionPane.showMessageDialog(null, "New password does not match", "Notification",
                     JOptionPane.ERROR_MESSAGE);
-        } else if (!newpwd.matches(".*[A-Z].*")) {
-            JOptionPane.showMessageDialog(null, "Password must contain at least one uppercase letter", "Notification",
+        } else if (newpwd.length() < 8) {
+            JOptionPane.showMessageDialog(null, "Password must be at least 8 characters", "Notification",
                     JOptionPane.ERROR_MESSAGE);
             return;
         } else {
@@ -181,18 +181,18 @@ public class ChangePasswordDialog extends javax.swing.JDialog {
                 this.PWDlength = confirm.length();
                 JOptionPane.showMessageDialog(
                         null,
-                        "Đổi mật khẩu thành công",
-                        "Thông Báo",
+                        "Password changed successfully",
+                        "Notification",
                         JOptionPane.INFORMATION_MESSAGE);
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Lỗi khi đổi mật khẩu: " + e.getMessage(), "Thông Báo",
+                JOptionPane.showMessageDialog(null, "Error changing password: " + e.getMessage(), "Notification",
                         JOptionPane.ERROR_MESSAGE);
             }
             dispose();
         }
     }// GEN-LAST:event_ChangeActionPerformed
 
-    private void CancelActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_CancelActionPerformed
+    private void CancelActionPerformed() {//GEN-FIRST:event_CancelActionPerformed
 
         dispose();
     }// GEN-LAST:event_CancelActionPerformed

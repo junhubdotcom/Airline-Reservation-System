@@ -201,7 +201,7 @@ public class FlightTemplate extends javax.swing.JPanel {
         BusinessClassPane.setPreferredSize(new java.awt.Dimension(150, 175));
         BusinessClassPane.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BusinessClassPaneMouseClicked(evt);
+                BusinessClassPaneMouseClicked();
             }
         });
 
@@ -268,7 +268,7 @@ public class FlightTemplate extends javax.swing.JPanel {
         economyClassPane.setPreferredSize(new java.awt.Dimension(150, 175));
         economyClassPane.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                economyClassPaneMouseClicked(evt);
+                economyClassPaneMouseClicked();
             }
         });
 
@@ -360,14 +360,14 @@ public class FlightTemplate extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BusinessClassPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BusinessClassPaneMouseClicked
+    private void BusinessClassPaneMouseClicked() {//GEN-FIRST:event_BusinessClassPaneMouseClicked
         // TODO add your handling code here:
         ConfirmationFrame confirmationFrame = new ConfirmationFrame(flight, passengerNumber, "Business", userID);
         confirmationFrame.setLocationRelativeTo(null);
         confirmationFrame.setVisible(true);
     }//GEN-LAST:event_BusinessClassPaneMouseClicked
 
-    private void economyClassPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_economyClassPaneMouseClicked
+    private void economyClassPaneMouseClicked() {//GEN-FIRST:event_economyClassPaneMouseClicked
         // TODO add your handling code here:
         ConfirmationFrame confirmationFrame = new ConfirmationFrame(flight, passengerNumber, "Economy", userID);
         confirmationFrame.setLocationRelativeTo(null);

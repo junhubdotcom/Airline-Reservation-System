@@ -1,7 +1,6 @@
 package Models;
 
 public class Seat {
-    private int SeatID;
     private String Position;
     private String Class;
     private int Available;
@@ -17,10 +16,6 @@ public class Seat {
         this.Position = Position;
         this.Price = Price;
         this.flight = flight;
-    }
-
-    public void setSeatID(int SeatID) {
-        this.SeatID = SeatID;
     }
 
     public String getPosition() {

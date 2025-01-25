@@ -292,7 +292,7 @@ public class ConfirmationFrame extends javax.swing.JFrame {
         CancelButton.setText("Hủy");
         CancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelButtonActionPerformed(evt);
+                CancelButtonActionPerformed();
             }
         });
 
@@ -301,7 +301,7 @@ public class ConfirmationFrame extends javax.swing.JFrame {
         ConfirmButton.setText("Tiếp Tục");
         ConfirmButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConfirmButtonActionPerformed(evt);
+                ConfirmButtonActionPerformed();
             }
         });
 
@@ -378,7 +378,7 @@ public class ConfirmationFrame extends javax.swing.JFrame {
         ConfirmInfoButton.setText("Xác Nhận");
         ConfirmInfoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConfirmInfoButtonActionPerformed(evt);
+                ConfirmInfoButtonActionPerformed();
             }
         });
 
@@ -387,7 +387,7 @@ public class ConfirmationFrame extends javax.swing.JFrame {
         Cancel.setText("Hủy");
         Cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelActionPerformed(evt);
+                CancelActionPerformed();
             }
         });
 
@@ -431,7 +431,7 @@ public class ConfirmationFrame extends javax.swing.JFrame {
         jButton1.setText("Yatta");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton1ActionPerformed();
             }
         });
 
@@ -488,7 +488,7 @@ public class ConfirmationFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmButtonActionPerformed
+    private void ConfirmButtonActionPerformed() {//GEN-FIRST:event_ConfirmButtonActionPerformed
         // TODO add your handling code here:
         InformationCard.setVisible(false);
         ConfirmCard.setVisible(true);
@@ -511,18 +511,18 @@ public class ConfirmationFrame extends javax.swing.JFrame {
         ConfirmBGPane.repaint();
     }
 
-    private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
+    private void CancelButtonActionPerformed() {//GEN-FIRST:event_CancelButtonActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_CancelButtonActionPerformed
 
-    private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
+    private void CancelActionPerformed() {//GEN-FIRST:event_CancelActionPerformed
         // TODO add your handling code here:
         ConfirmCard.setVisible(false);
         InformationCard.setVisible(true);
     }//GEN-LAST:event_CancelActionPerformed
 
-    private void ConfirmInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmInfoButtonActionPerformed
+    private void ConfirmInfoButtonActionPerformed() {//GEN-FIRST:event_ConfirmInfoButtonActionPerformed
         // TODO add your handling code here:
         if (check()) {
             // logic needed here
@@ -539,7 +539,7 @@ public class ConfirmationFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ConfirmInfoButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed() {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
