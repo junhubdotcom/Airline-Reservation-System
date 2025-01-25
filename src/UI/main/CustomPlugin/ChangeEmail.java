@@ -63,14 +63,14 @@ public class ChangeEmail extends javax.swing.JDialog {
         OK_button.setText("OK");
         OK_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OK_buttonActionPerformed(evt);
+                OK_buttonActionPerformed();
             }
         });
 
-        Cancel_button.setText("Cancel");
+        Cancel_button.setText("Cancel"); 
         Cancel_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Cancel_buttonActionPerformed(evt);
+                Cancel_buttonActionPerformed();
             }
         });
 
@@ -116,7 +116,7 @@ public class ChangeEmail extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void OK_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OK_buttonActionPerformed
+    private void OK_buttonActionPerformed() {//GEN-FIRST:event_OK_buttonActionPerformed
         // TODO add your handling code here:
         String newEmail = newEmailField.getText();
         try {
@@ -131,7 +131,7 @@ public class ChangeEmail extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_OK_buttonActionPerformed
 
-    private void Cancel_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cancel_buttonActionPerformed
+    private void Cancel_buttonActionPerformed() {//GEN-FIRST:event_Cancel_buttonActionPerformed
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_Cancel_buttonActionPerformed

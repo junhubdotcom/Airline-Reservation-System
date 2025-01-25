@@ -134,7 +134,7 @@ public class LoginAdmin extends javax.swing.JFrame {
         LoginButton.setText("Login");
         LoginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginButtonActionPerformed(evt);
+                LoginButtonActionPerformed();
             }
         });
 
@@ -298,7 +298,7 @@ public class LoginAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
+    private void LoginButtonActionPerformed() {//GEN-FIRST:event_LoginButtonActionPerformed
         String getEmail = EmailField.getText().trim();
         String getAdminPassword = new String(PasswordField.getPassword()).trim();
 

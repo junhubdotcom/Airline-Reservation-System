@@ -62,7 +62,7 @@ public class ChangePasswordDialog extends javax.swing.JDialog {
 
         confirmPWD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirmPWDActionPerformed(evt);
+                confirmPWDActionPerformed();
             }
         });
 
@@ -71,14 +71,14 @@ public class ChangePasswordDialog extends javax.swing.JDialog {
         Change.setText("Change");
         Change.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ChangeActionPerformed(evt);
+                ChangeActionPerformed();
             }
         });
 
         Cancel.setText("Cancel");
         Cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelActionPerformed(evt);
+                CancelActionPerformed();
             }
         });
 
@@ -148,11 +148,11 @@ public class ChangePasswordDialog extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void confirmPWDActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_confirmPWDActionPerformed
+    private void confirmPWDActionPerformed() {//GEN-FIRST:event_confirmPWDActionPerformed
         // TODO add your handling code here:
     }// GEN-LAST:event_confirmPWDActionPerformed
 
-    private void ChangeActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ChangeActionPerformed
+    private void ChangeActionPerformed() {//GEN-FIRST:event_ChangeActionPerformed
 
         String pwsd;
         try {
@@ -191,7 +191,7 @@ public class ChangePasswordDialog extends javax.swing.JDialog {
         }
     }// GEN-LAST:event_ChangeActionPerformed
 
-    private void CancelActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_CancelActionPerformed
+    private void CancelActionPerformed() {//GEN-FIRST:event_CancelActionPerformed
 
         dispose();
     }// GEN-LAST:event_CancelActionPerformed

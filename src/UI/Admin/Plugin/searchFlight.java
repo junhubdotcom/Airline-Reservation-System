@@ -59,7 +59,7 @@ public class searchFlight extends javax.swing.JFrame {
         jButton1.setText("Search");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton1ActionPerformed();
             }
         });
 
@@ -114,7 +114,7 @@ public class searchFlight extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed() {//GEN-FIRST:event_jButton1ActionPerformed
         // Lấy giá trị từ các ô nhập liệu
         String planeID = FlightID.getText().trim();
         String departureCity = Departure.getText().trim();

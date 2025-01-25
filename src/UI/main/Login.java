@@ -18,6 +18,7 @@ import javax.swing.*;
 
 public class Login extends javax.swing.JFrame {
     private AirlineSystem manager = new AirlineSystem();
+    private javax.swing.JPanel loginPanel;
 
     /**
      * Creates new form Login
@@ -34,8 +35,7 @@ public class Login extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
-        Login = new javax.swing.JPanel();
+        loginPanel = new javax.swing.JPanel();
         Left = new javax.swing.JPanel();
         BrandName = new javax.swing.JLabel();
         CopyRight = new javax.swing.JLabel();
@@ -83,9 +83,9 @@ public class Login extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new java.awt.CardLayout());
 
-        Login.setBackground(new java.awt.Color(255, 255, 255));
-        Login.setPreferredSize(new java.awt.Dimension(900, 500));
-        Login.setLayout(null);
+        this.setBackground(new java.awt.Color(255, 255, 255));
+        this.setPreferredSize(new java.awt.Dimension(900, 500));
+        this.setLayout(null);
 
         Left.setBackground(new java.awt.Color(204, 0, 0));
         Left.setPreferredSize(new java.awt.Dimension(400, 500));
@@ -128,7 +128,7 @@ public class Login extends javax.swing.JFrame {
                                 .addGap(106, 106, 106))
         );
 
-        Login.add(Left);
+        this.add(Left);
         Left.setBounds(0, 0, 450, 500);
 
         Right.setBackground(new java.awt.Color(255, 255, 255));
@@ -143,7 +143,7 @@ public class Login extends javax.swing.JFrame {
 
         EmailField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EmailFieldActionPerformed(evt);
+                EmailFieldActionPerformed();
             }
         });
 
@@ -152,7 +152,7 @@ public class Login extends javax.swing.JFrame {
 
         PasswordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PasswordFieldActionPerformed(evt);
+                PasswordFieldActionPerformed();
             }
         });
 
@@ -160,7 +160,7 @@ public class Login extends javax.swing.JFrame {
         SignUpButtons.setText("Sign Up");
         SignUpButtons.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SignUpButtonsActionPerformed(evt);
+                SignUpButtonsActionPerformed();
             }
         });
 
@@ -172,7 +172,7 @@ public class Login extends javax.swing.JFrame {
         LoginButton.setText("Login");
         LoginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginButtonActionPerformed(evt);
+                LoginButtonActionPerformed();
             }
         });
 
@@ -181,7 +181,7 @@ public class Login extends javax.swing.JFrame {
         ForgotButton.setText("Forgot Password");
         ForgotButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ForgotButtonActionPerformed(evt);
+                ForgotButtonActionPerformed();
             }
         });
 
@@ -189,12 +189,12 @@ public class Login extends javax.swing.JFrame {
         ShowPWD.setText("Show password");
         ShowPWD.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                ShowPWDStateChanged(evt);
+                ShowPWDStateChanged();
             }
         });
         ShowPWD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ShowPWDActionPerformed(evt);
+                ShowPWDActionPerformed();
             }
         });
 
@@ -250,10 +250,9 @@ public class Login extends javax.swing.JFrame {
                                 .addContainerGap(75, Short.MAX_VALUE))
         );
 
-        Login.add(Right);
+        this.add(Right);
         Right.setBounds(450, 0, 450, 500);
-
-        getContentPane().add(Login, "login");
+        getContentPane().add(loginPanel, "login");
 
         SignUp.setBackground(new java.awt.Color(255, 255, 255));
         SignUp.setPreferredSize(new java.awt.Dimension(900, 500));
@@ -315,13 +314,13 @@ public class Login extends javax.swing.JFrame {
 
         signupUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                signupUsernameActionPerformed(evt);
+                signupUsernameActionPerformed();
             }
         });
 
         signupEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                signupEmailActionPerformed(evt);
+                signupEmailActionPerformed();
             }
         });
 
@@ -336,7 +335,7 @@ public class Login extends javax.swing.JFrame {
         SignUpButton.setText("Sign Up");
         SignUpButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SignUpButtonActionPerformed(evt);
+                SignUpButtonActionPerformed();
             }
         });
 
@@ -344,7 +343,7 @@ public class Login extends javax.swing.JFrame {
         quitSignUp.setText("Quit");
         quitSignUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                quitSignUpActionPerformed(evt);
+                quitSignUpActionPerformed();
             }
         });
 
@@ -453,7 +452,7 @@ public class Login extends javax.swing.JFrame {
         jButton1.setText("Xác nhận");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton1ActionPerformed();
             }
         });
 
@@ -461,7 +460,7 @@ public class Login extends javax.swing.JFrame {
         jButton2.setText("Hủy");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButton2ActionPerformed();
             }
         });
 
@@ -523,19 +522,19 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void EmailFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailFieldActionPerformed
+    private void EmailFieldActionPerformed() {//GEN-FIRST:event_EmailFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EmailFieldActionPerformed
 
-    private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed
+    private void PasswordFieldActionPerformed() {//GEN-FIRST:event_PasswordFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordFieldActionPerformed
 
-    private void SignUpButtonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpButtonsActionPerformed
+    private void SignUpButtonsActionPerformed() {//GEN-FIRST:event_SignUpButtonsActionPerformed
         showPanel("signup");
     }//GEN-LAST:event_SignUpButtonsActionPerformed
 
-    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
+    private void LoginButtonActionPerformed() {//GEN-FIRST:event_LoginButtonActionPerformed
         String username = EmailField.getText();
         String password = new String(PasswordField.getPassword());
 
@@ -585,15 +584,15 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_LoginButtonActionPerformed
 
-    private void signupUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupUsernameActionPerformed
+    private void signupUsernameActionPerformed() {//GEN-FIRST:event_signupUsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_signupUsernameActionPerformed
 
-    private void signupEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupEmailActionPerformed
+    private void signupEmailActionPerformed() {//GEN-FIRST:event_signupEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_signupEmailActionPerformed
 
-    private void SignUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpButtonActionPerformed
+    private void SignUpButtonActionPerformed() {//GEN-FIRST:event_SignUpButtonActionPerformed
 
         String email = signupEmail.getText();
         String username = signupUsername.getText();
@@ -624,24 +623,24 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_SignUpButtonActionPerformed
 
-    private void quitSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitSignUpActionPerformed
+    private void quitSignUpActionPerformed() {//GEN-FIRST:event_quitSignUpActionPerformed
         showPanel("login");
     }//GEN-LAST:event_quitSignUpActionPerformed
 
-    private void ForgotButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ForgotButtonActionPerformed
+    private void ForgotButtonActionPerformed() {//GEN-FIRST:event_ForgotButtonActionPerformed
         showPanel("forgotpassword");
     }//GEN-LAST:event_ForgotButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton2ActionPerformed() {//GEN-FIRST:event_jButton2ActionPerformed
         showPanel("login");
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void ShowPWDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowPWDActionPerformed
+    private void ShowPWDActionPerformed() {//GEN-FIRST:event_ShowPWDActionPerformed
         // TODO add your handling code here:
 
     }//GEN-LAST:event_ShowPWDActionPerformed
 
-    private void ShowPWDStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ShowPWDStateChanged
+    private void ShowPWDStateChanged() {//GEN-FIRST:event_ShowPWDStateChanged
         // TODO add your handling code here:
         if (ShowPWD.isSelected()) {
             PasswordField.setEchoChar((char) 0);
@@ -650,7 +649,7 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ShowPWDStateChanged
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed() {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String username = FUsernameField.getText();
         String email = FEmailField.getText();
@@ -726,7 +725,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel Fullname;
     private javax.swing.JPanel Left;
     private javax.swing.JPanel Left2;
-    private javax.swing.JPanel Login;
     private javax.swing.JButton LoginButton;
     private javax.swing.JLabel LoginLabel;
     private javax.swing.JLabel Password;

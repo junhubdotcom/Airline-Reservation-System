@@ -72,7 +72,7 @@ public class editFlight extends javax.swing.JFrame {
         Edit.setText("Edit");
         Edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EditActionPerformed(evt);
+                EditActionPerformed();
             }
         });
 
@@ -188,7 +188,7 @@ public class editFlight extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
+    private void EditActionPerformed() {//GEN-FIRST:event_EditActionPerformed
         // Lấy dữ liệu từ JTextField
         String flightID = FlightID.getText().trim();
         String departure = Departure.getText().trim();
