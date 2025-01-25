@@ -3,7 +3,8 @@ package Models;
 import java.util.Date;
 
 public class Flightxtended extends Flight {
-    private int economySeatAvailable, businessSeatAvailable;
+    private int economySeatAvailable;
+    private int businessSeatAvailable;
 
     public Flightxtended(Date DepartureTime, Date ArrivalTime, Plane plane, Airport ArrivalAirport, Airport DepartureAirport, int economySeat, int businessSeat) {
         super(DepartureTime, ArrivalTime, plane, ArrivalAirport, DepartureAirport);

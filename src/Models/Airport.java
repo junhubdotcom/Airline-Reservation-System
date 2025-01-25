@@ -1,7 +1,9 @@
 package Models;
 
 public class Airport {
-    private String AirportName, City, AirportCode;
+    private String AirportName;
+    private String City;
+    private String AirportCode;
     private int AirportID;
 
     public Airport(String AirportName, String City, String APC) {

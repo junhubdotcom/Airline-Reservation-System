@@ -10,7 +10,10 @@ import Models.Passenger;
  * @author Sakana
  */
 public class ConfirmTemplate extends javax.swing.JPanel {
-    private String FirstName, LastName, PhoneNumber, CCCD;
+    private String FirstName; 
+    private String LastName;
+    private String PhoneNumber; 
+    private String CCCD;
     private Passenger passenger;
 
     /**

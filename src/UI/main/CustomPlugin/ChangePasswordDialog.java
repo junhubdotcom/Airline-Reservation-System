@@ -14,7 +14,8 @@ import java.sql.SQLException;
  * @author Sakana
  */
 public class ChangePasswordDialog extends javax.swing.JDialog {
-    private int PWDlength, userID;
+    private int PWDlength;
+    private int userID;
 
     public int getPWDlength() {
         return PWDlength;
