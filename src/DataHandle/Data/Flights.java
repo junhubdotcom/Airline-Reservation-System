@@ -228,16 +228,18 @@ public class Flights {
 
         ArrayList<ArrayList<Object>> flightsList = new ArrayList<>();
         try (Connection connection = DriverManager.getConnection(
-                CommonConstants.DB_URL, CommonConstants.DB_USERNAME, CommonConstants.DB_PASSWORD);
-                PreparedStatement preparedStatement = connection.prepareStatement(finalSQL)) {
+            CommonConstants.DB_URL, CommonConstants.DB_USERNAME, CommonConstants.DB_PASSWORD);
+         PreparedStatement preparedStatement = connection.prepareStatement(finalSQL)) {
 
-            for (int i = 0; i < parameters.size(); i++) {
-                preparedStatement.setObject(i + 1, parameters.get(i));
-            }
+        // Bind parameters safely
+        for (int i = 0; i < parameters.size(); i++) {
+            preparedStatement.setObject(i + 1, parameters.get(i));
+        }
 
-            ResultSet resultSet = preparedStatement.executeQuery();
+        // Execute the query and process the result set
+        try (ResultSet resultSet = preparedStatement.executeQuery()) {
             while (resultSet.next()) {
-                ArrayList<Object> flightData = new ArrayList<>();
+                List<Object> flightData = new ArrayList<>();
                 flightData.add(resultSet.getInt("FlightID"));
                 flightData.add(resultSet.getTimestamp("DepartureTime"));
                 flightData.add(resultSet.getTimestamp("ArrivalTime"));
@@ -246,15 +248,17 @@ public class Flights {
                 flightData.add(resultSet.getString("ArrivalAirportName"));
                 flightData.add(resultSet.getString("DepartureCity"));
                 flightData.add(resultSet.getString("ArrivalCity"));
-                flightsList.add(flightData);
+                flightsList.add((ArrayList<Object>) flightData);
             }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
 
-        return flightsList;
+    } catch (SQLException e) {
+        // Log the error (avoid printing stack trace directly in production)
+        System.err.println("Error fetching flight data: " + e.getMessage());
     }
+
+    return flightsList;
+}
 
     private static void addConditionAndParameter(List<String> conditions, List<Object> parameters, String condition,
             String value) {
