@@ -12,11 +12,14 @@ import DataHandle.Data.*;
  * @author ADMIN
  */
 public class LoginAdmin extends javax.swing.JFrame {
+        private javax.swing.JPanel pnContainer;
+        private javax.swing.JLabel lbl_quen_mat_khau;
 
     /**
      * Creates new form LoginAdmin
      */
     public LoginAdmin() {
+        
         initComponents();
     }
 
@@ -28,8 +31,7 @@ public class LoginAdmin extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        final javax.swing.JPanel pnContainer;
-        final javax.swing.JLabel lbl_quen_mat_khau;
+        
         
 
         AdminLogin = new javax.swing.JPanel();
