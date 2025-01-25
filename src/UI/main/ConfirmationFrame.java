@@ -48,7 +48,8 @@ public class ConfirmationFrame extends javax.swing.JFrame {
     private void loadInfor() {
         TimeHandle timeHandle = new TimeHandle();
         String[] hourNmin = timeHandle.getDiffTime(flight.getDepartureTime(), flight.getArrivalTime()).split(" ");
-        String hour = hourNmin[0], min = hourNmin[1];
+        String hour = hourNmin[0];
+        String min = hourNmin[1];
 
         DepAndArrCity.setText(flight.getDepartureAirport().getCity() + " - " + flight.getArrivalAirport().getCity());
 

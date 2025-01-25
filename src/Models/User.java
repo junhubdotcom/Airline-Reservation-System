@@ -2,7 +2,9 @@ package Models;
 
 public class User {
     private int UserID;
-    private String account, password, email;
+    private String account; 
+    private String password;
+    private String email;
 
     public User(String account, String password, String email) {
         this.account = account;

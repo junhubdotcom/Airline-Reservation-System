@@ -14,9 +14,11 @@ import java.util.Date;
 public class Flight {
     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
     private int flightID;
-    private Date DepartureTime, ArrivalTime;
+    private Date DepartureTime;
+    private Date ArrivalTime;
     Plane plane;
-    Airport ArrivalAirport, DepartureAirport;
+    Airport ArrivalAirport;
+    Airport DepartureAirport;
 
     public Flight(Date DepartureTime, Date ArrivalTime, Plane plane, Airport ArrivalAirport, Airport DepartureAirport) {
         this.DepartureTime = DepartureTime;

@@ -6,8 +6,9 @@ import java.util.Date;
 
 public class TimeHandle {
 
-    String[] daysInVietnamese = {"Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"};
-    SimpleDateFormat hourFormat = new SimpleDateFormat("hh:mm"), dayFormat = new SimpleDateFormat("dd-MM-yyyy");
+    String[] daysInVietnamese = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+    SimpleDateFormat hourFormat = new SimpleDateFormat("hh:mm");
+    SimpleDateFormat dayFormat = new SimpleDateFormat("dd-MM-yyyy");
     Calendar calendar = Calendar.getInstance();
 
     public String getDiffTime(Date Dep, Date Arr) {

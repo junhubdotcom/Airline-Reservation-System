@@ -20,7 +20,8 @@ public class FlightTemplate extends javax.swing.JPanel {
     private int userID;
     private Flightxtended flight;
     private int passengerNumber;
-    SimpleDateFormat hour = new SimpleDateFormat("HH:mm"), day = new SimpleDateFormat("dd-MM-yyyy");
+    SimpleDateFormat hour = new SimpleDateFormat("HH:mm");
+    SimpleDateFormat day = new SimpleDateFormat("dd-MM-yyyy");
 
     public FlightTemplate(Flightxtended flight, int passengerNumber, int userID) {
         initComponents();
