@@ -28,6 +28,10 @@ public class addAirport extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        
+        final javax.swing.JLabel jLabel1;
+        final javax.swing.JLabel jLabel3;
+        final javax.swing.JLabel jLabel4;
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -167,9 +171,7 @@ public class addAirport extends javax.swing.JFrame {
     private javax.swing.JTextField airportName;
     private javax.swing.JTextField city;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    
     // End of variables declaration//GEN-END:variables
 }
