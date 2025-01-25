@@ -149,6 +149,7 @@ public class editPlane extends javax.swing.JFrame {
                                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
+        
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
