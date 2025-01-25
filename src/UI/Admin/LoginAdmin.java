@@ -29,6 +29,7 @@ public class LoginAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
         final javax.swing.JPanel pnContainer;
+        final javax.swing.JLabel lbl_quen_mat_khau;
         
 
         AdminLogin = new javax.swing.JPanel();
@@ -357,7 +358,7 @@ public class LoginAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField email_field;
     private javax.swing.JLabel icon_quen_mat_khau;
     private javax.swing.JLabel lbl_email;
-    private javax.swing.JLabel lbl_quen_mat_khau;
+    
     private javax.swing.JLabel lbl_username;
     private javax.swing.JLabel logo;
     
