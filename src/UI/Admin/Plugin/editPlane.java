@@ -160,7 +160,6 @@ public class editPlane extends javax.swing.JFrame {
             int seats = Integer.parseInt(seat.getText().trim());
             String airportName = airpotName.getText().trim();
             String updatedBy = admin.getText().trim();
-            Date updatedDate = (Date) jSpinner1.getValue();
 
             // Kiểm tra đầu vào
             if (modelVal.isEmpty() || airportName.isEmpty() || updatedBy.isEmpty()) {

@@ -150,7 +150,6 @@ public class addPlane extends javax.swing.JFrame {
         String seatText = seat.getText().trim();
         String locationText = airpotName.getText().trim();
         String adminText = admin.getText().trim();
-        java.util.Date updatedDate = (java.util.Date) jSpinner1.getValue();
 
         // Kiểm tra dữ liệu nhập vào
         if (modelText.isEmpty() || seatText.isEmpty() || locationText.isEmpty() || adminText.isEmpty()) {

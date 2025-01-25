@@ -43,8 +43,6 @@ public class FlightControl {
             int planeId = (int) row.get(3);
             String departureAirportName = (String) row.get(4);
             String arrivalAirportName = (String) row.get(5);
-            String departureCityName = (String) row.get(6);
-            String arrivalCityName = (String) row.get(7);
             int businessAvailableSeats = (int) row.get(8);
             int economyAvailableSeats = (int) row.get(9);
 
