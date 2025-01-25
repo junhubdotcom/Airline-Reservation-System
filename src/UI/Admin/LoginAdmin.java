@@ -28,6 +28,8 @@ public class LoginAdmin extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        final javax.swing.JPanel pnContainer;
+        
 
         AdminLogin = new javax.swing.JPanel();
         Left = new javax.swing.JPanel();
@@ -358,8 +360,9 @@ public class LoginAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_quen_mat_khau;
     private javax.swing.JLabel lbl_username;
     private javax.swing.JLabel logo;
-    private javax.swing.JPanel pnContainer;
+    
     private javax.swing.JPanel pnTitle;
     private javax.swing.JTextField username_field;
     // End of variables declaration//GEN-END:variables
 }
+
