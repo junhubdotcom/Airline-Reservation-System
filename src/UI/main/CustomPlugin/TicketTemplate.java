@@ -180,7 +180,7 @@ public class TicketTemplate extends javax.swing.JPanel {
         lblCancelTicket.setText("X");
         lblCancelTicket.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblCancelTicketMouseClicked(evt);
+                lblCancelTicketMouseClicked();
             }
         });
 
@@ -431,7 +431,7 @@ public class TicketTemplate extends javax.swing.JPanel {
         rightName.setBounds(900, 130, 130, 25);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblCancelTicketMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCancelTicketMouseClicked
+    private void lblCancelTicketMouseClicked() {//GEN-FIRST:event_lblCancelTicketMouseClicked
         //xoave
         int key = JOptionPane.showConfirmDialog(
                 null,

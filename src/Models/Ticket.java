@@ -4,8 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Ticket {
-    
-    private int ticketID;
     private String TicketCode;
     private Passenger passenger;
     private Seat Seat;
@@ -19,10 +17,6 @@ public class Ticket {
         this.flight = flight;
         this.ReservationDate = ReservationDate;
         this.Price = getSeat().getPrice();
-    }
-
-    public void setTicketID(int ticketID) {
-        this.ticketID = ticketID;
     }
 
     public String getTicketCode() {

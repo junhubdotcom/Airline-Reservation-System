@@ -2,9 +2,11 @@ package Models;
 
 public class Passenger {
     private int PassengerID;
-    private String LastName, FirstName;
+    private String LastName;
+    private String FirstName;
     int UserID;
-    private String PhoneNumber, CitizenIdentificationNumber;
+    private String PhoneNumber;
+    private String CitizenIdentificationNumber;
 
     public Passenger(String FirstName, String LastName, int UserID, String PhoneNumber, String CitizenIdentificationNumber) {
         this.FirstName = FirstName;
