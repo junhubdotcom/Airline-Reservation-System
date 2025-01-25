@@ -17,6 +17,9 @@ public class addFlight extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        final javax.swing.JButton jButton1;
+        final javax.swing.JLabel jLabel1;
+        final javax.swing.JLabel jLabel6;
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -179,11 +182,8 @@ public class addFlight extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField arrival;
     private javax.swing.JSpinner departureTime;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField planeID;
     private javax.swing.JTextField updatedName;
