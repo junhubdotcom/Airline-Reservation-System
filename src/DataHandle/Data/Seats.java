@@ -21,8 +21,8 @@ public class Seats {
 
         try (Connection connection = DriverManager.getConnection(
                 CommonConstants.DB_URL, CommonConstants.DB_USERNAME, CommonConstants.DB_PASSWORD);
-             PreparedStatement viewSeatSQL1Stmt = connection.prepareStatement(viewSeatSQL1);
-             PreparedStatement viewSeatSQL2Stmt = connection.prepareStatement(viewSeatSQL2)) {
+                PreparedStatement viewSeatSQL1Stmt = connection.prepareStatement(viewSeatSQL1);
+                PreparedStatement viewSeatSQL2Stmt = connection.prepareStatement(viewSeatSQL2)) {
 
             viewSeatSQL1Stmt.setInt(1, FlightID);
             viewSeatSQL2Stmt.setInt(1, FlightID);
@@ -53,7 +53,7 @@ public class Seats {
 
         try (Connection connection = DriverManager.getConnection(
                 CommonConstants.DB_URL, CommonConstants.DB_USERNAME, CommonConstants.DB_PASSWORD);
-             PreparedStatement deleteSeatsStmt = connection.prepareStatement(deleteSeatsSQL)) {
+                PreparedStatement deleteSeatsStmt = connection.prepareStatement(deleteSeatsSQL)) {
 
             deleteSeatsStmt.setInt(1, flightID);
             int rowsAffected = deleteSeatsStmt.executeUpdate();
@@ -66,12 +66,14 @@ public class Seats {
     }
 
     // method for user to find flights
-    public static ArrayList<ArrayList<Object>> viewSeatAvailableForPassenger(String departureTime, String departureCityName,
-                                                                             String arrivalCityName, int seatNumber) {
+    public static ArrayList<ArrayList<Object>> viewSeatAvailableForPassenger(String departureTime,
+            String departureCityName,
+            String arrivalCityName, int seatNumber) {
         String viewSeatSQL = "SELECT f.FlightID, f.DepartureTime, f.ArrivalTime, f.PlaneID, " +
                 "da.AirportName AS DepartureAirportName, aa.AirportName AS ArrivalAirportName, " +
                 "da.City AS DepartureCity, aa.City AS ArrivalCity, " +
-                "SUM(CASE WHEN s.Class = 'Business' AND s.Available = 1 THEN 1 ELSE 0 END) AS BusinessAvailableSeats, " +
+                "SUM(CASE WHEN s.Class = 'Business' AND s.Available = 1 THEN 1 ELSE 0 END) AS BusinessAvailableSeats, "
+                +
                 "SUM(CASE WHEN s.Class = 'Economy' AND s.Available = 1 THEN 1 ELSE 0 END) AS EconomyAvailableSeats " +
                 "FROM airline.flights f " +
                 "JOIN airline.airports da ON f.DepartureAirportID = da.AirportID " +
@@ -98,7 +100,7 @@ public class Seats {
 
         try (Connection connection = DriverManager.getConnection(
                 CommonConstants.DB_URL, CommonConstants.DB_USERNAME, CommonConstants.DB_PASSWORD);
-             PreparedStatement viewSeatsStmt = connection.prepareStatement(viewSeatSQL)) {
+                PreparedStatement viewSeatsStmt = connection.prepareStatement(viewSeatSQL)) {
 
             int index = 1;
             if (!departureTime.isEmpty()) {
@@ -136,93 +138,76 @@ public class Seats {
         return seatsList;
     }
 
-    public static ArrayList<ArrayList<Object>> viewSeatAvailable(String departureTime, String arrivalTime,
-                                                                 String flightID, String departureCityName, String arrivalCityName) {
+    public static ArrayList<ArrayList<Object>> viewFlight(String departureTime, String arrivalTime,
+            String planeID, String departureCityName, String arrivalCityName) {
 
-        String viewSeatSQL = "SELECT f.FlightID, f.DepartureTime, f.ArrivalTime, f.PlaneID, " +
+        String baseSQL = "SELECT f.FlightID, f.DepartureTime, f.ArrivalTime, f.PlaneID, " +
                 "da.AirportName AS DepartureAirportName, aa.AirportName AS ArrivalAirportName, " +
-                "da.City AS DepartureCity, aa.City AS ArrivalCity, " +
-                "SUM(CASE WHEN s.Class = 'Business' AND s.Available = 1 THEN 1 ELSE 0 END) AS BusinessAvailableSeats, " +
-                "SUM(CASE WHEN s.Class = 'Economy' AND s.Available = 1 THEN 1 ELSE 0 END) AS EconomyAvailableSeats " +
-                "FROM airline.flights f " +
-                "JOIN airline.airports da ON f.DepartureAirportID = da.AirportID " +
-                "JOIN airline.airports aa ON f.ArrivalAirportID = aa.AirportID " +
-                "JOIN airline.seats s ON f.FlightID = s.FlightID " +
-                "WHERE 1=1 ";
+                "da.City AS DepartureCity, aa.City AS ArrivalCity " +
+                "FROM " + CommonConstants.DB_FLIGHTS_TABLE + " f " +
+                "JOIN " + CommonConstants.DB_AIRPORTS_TABLE + " da ON f.DepartureAirportID = da.AirportID " +
+                "JOIN " + CommonConstants.DB_AIRPORTS_TABLE + " aa ON f.ArrivalAirportID = aa.AirportID WHERE 1=1";
 
-        ArrayList<ArrayList<Object>> seatsList = new ArrayList<>();
+        List<String> conditions = new ArrayList<>();
+        List<Object> parameters = new ArrayList<>();
 
-        if (!departureTime.isEmpty()) {
-            viewSeatSQL += " AND f.DepartureTime >= ? ";
-        }
-        if (!arrivalTime.isEmpty()) {
-            viewSeatSQL += " AND f.ArrivalTime <= ? ";
-        }
-        if (!flightID.isEmpty()) {
-            viewSeatSQL += " AND f.FlightID = ? ";
-        }
-        if (!departureCityName.isEmpty()) {
-            viewSeatSQL += " AND da.City LIKE ? ";
-        }
-        if (!arrivalCityName.isEmpty()) {
-            viewSeatSQL += " AND aa.City LIKE ? ";
-        }
+        addConditionAndParameter(conditions, parameters, "f.DepartureTime >= ?", departureTime);
+        addConditionAndParameter(conditions, parameters, "f.ArrivalTime <= ?", arrivalTime);
+        addConditionAndParameter(conditions, parameters, "f.PlaneID = ?", planeID);
+        addConditionAndParameter(conditions, parameters, "da.City LIKE ?",
+                departureCityName.isEmpty() ? "" : "%" + departureCityName + "%");
+        addConditionAndParameter(conditions, parameters, "aa.City LIKE ?",
+                arrivalCityName.isEmpty() ? "" : "%" + arrivalCityName + "%");
 
-        viewSeatSQL += " GROUP BY f.FlightID, f.DepartureTime, f.ArrivalTime, f.PlaneID, " +
-                "da.AirportName, aa.AirportName, da.City, aa.City";
+        String finalSQL = baseSQL + String.join(" ", conditions);
 
+        ArrayList<ArrayList<Object>> flightsList = new ArrayList<>();
         try (Connection connection = DriverManager.getConnection(
                 CommonConstants.DB_URL, CommonConstants.DB_USERNAME, CommonConstants.DB_PASSWORD);
-             PreparedStatement viewSeatsStmt = connection.prepareStatement(viewSeatSQL)) {
+                PreparedStatement preparedStatement = connection.prepareStatement(finalSQL)) {
 
-            int index = 1;
-            if (!departureTime.isEmpty()) {
-                viewSeatsStmt.setString(index++, departureTime);
-            }
-            if (!arrivalTime.isEmpty()) {
-                viewSeatsStmt.setString(index++, arrivalTime);
-            }
-            if (!flightID.isEmpty()) {
-                viewSeatsStmt.setString(index++, flightID);
-            }
-            if (!departureCityName.isEmpty()) {
-                viewSeatsStmt.setString(index++, "%" + departureCityName + "%");
-            }
-            if (!arrivalCityName.isEmpty()) {
-                viewSeatsStmt.setString(index++, "%" + arrivalCityName + "%");
+            for (int i = 0; i < parameters.size(); i++) {
+                preparedStatement.setObject(i + 1, parameters.get(i));
             }
 
-            ResultSet resultSet = viewSeatsStmt.executeQuery();
+            ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                ArrayList<Object> seatData = new ArrayList<>();
-                seatData.add(resultSet.getString("FlightID"));
-                seatData.add(resultSet.getTimestamp("DepartureTime"));
-                seatData.add(resultSet.getTimestamp("ArrivalTime"));
-                seatData.add(resultSet.getInt("PlaneID"));
-                seatData.add(resultSet.getString("DepartureAirportName"));
-                seatData.add(resultSet.getString("ArrivalAirportName"));
-                seatData.add(resultSet.getString("DepartureCity"));
-                seatData.add(resultSet.getString("ArrivalCity"));
-                seatData.add(resultSet.getInt("BusinessAvailableSeats"));
-                seatData.add(resultSet.getInt("EconomyAvailableSeats"));
-                seatsList.add(seatData);
+                ArrayList<Object> flightData = new ArrayList<>();
+                flightData.add(resultSet.getInt("FlightID"));
+                flightData.add(resultSet.getTimestamp("DepartureTime"));
+                flightData.add(resultSet.getTimestamp("ArrivalTime"));
+                flightData.add(resultSet.getInt("PlaneID"));
+                flightData.add(resultSet.getString("DepartureAirportName"));
+                flightData.add(resultSet.getString("ArrivalAirportName"));
+                flightData.add(resultSet.getString("DepartureCity"));
+                flightData.add(resultSet.getString("ArrivalCity"));
+                flightsList.add(flightData);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return seatsList;
+        return flightsList;
     }
 
-    public static boolean modifySeat(int seatID, String seatClass, boolean available, double newPrice, String updatedBy) {
+    private static void addConditionAndParameter(List<String> conditions, List<Object> parameters, String condition,
+            String value) {
+        if (!value.isEmpty()) {
+            conditions.add(" AND " + condition);
+            parameters.add(value);
+        }
+    }
+
+    public static boolean modifySeat(int seatID, String seatClass, boolean available, double newPrice,
+            String updatedBy) {
         String modifySeatSQL = "UPDATE airline.seats SET Class = ?, Available = ?, Price = ?, UpdatedBy = ?, UpdatedDate = ? WHERE SeatID = ?";
 
         try (Connection connection = DriverManager.getConnection(
                 CommonConstants.DB_URL, CommonConstants.DB_USERNAME, CommonConstants.DB_PASSWORD);
-             PreparedStatement modifySeatStmt = connection.prepareStatement(modifySeatSQL);
-             PreparedStatement adminIDStmt = connection.prepareStatement(
-                     "SELECT AdminID FROM airline.admins WHERE AdminName = ?")) {
+                PreparedStatement modifySeatStmt = connection.prepareStatement(modifySeatSQL);
+                PreparedStatement adminIDStmt = connection.prepareStatement(
+                        "SELECT AdminID FROM airline.admins WHERE AdminName = ?")) {
 
             adminIDStmt.setString(1, updatedBy);
             ResultSet resultSet = adminIDStmt.executeQuery();
@@ -251,16 +236,16 @@ public class Seats {
     }
 
     public static boolean insertSeats(int flightID, double economyPrice,
-                                      double businessPrice, String updatedName) {
+            double businessPrice, String updatedName) {
 
         String insertSeatSQL = "INSERT INTO " + CommonConstants.DB_SEATS_TABLE +
                 " (FlightID, Class, Position, Available, Price, UpdatedBy, UpdatedDate) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection connection = DriverManager.getConnection(
                 CommonConstants.DB_URL, CommonConstants.DB_USERNAME, CommonConstants.DB_PASSWORD);
-             PreparedStatement adminIDStmt = connection.prepareStatement(
-                     "SELECT AdminID FROM " + CommonConstants.DB_ADMIN_TABLE + " WHERE AdminName = ?");
-             PreparedStatement insertSeatStmt = connection.prepareStatement(insertSeatSQL)) {
+                PreparedStatement adminIDStmt = connection.prepareStatement(
+                        "SELECT AdminID FROM " + CommonConstants.DB_ADMIN_TABLE + " WHERE AdminName = ?");
+                PreparedStatement insertSeatStmt = connection.prepareStatement(insertSeatSQL)) {
 
             connection.setAutoCommit(false);
 
@@ -323,8 +308,9 @@ public class Seats {
                 "FROM airline.seats s " +
                 "WHERE Available = 1 AND Class = ? AND FlightID = ?";
 
-        try (Connection connection = DriverManager.getConnection(CommonConstants.DB_URL, CommonConstants.DB_USERNAME, CommonConstants.DB_PASSWORD);
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+        try (Connection connection = DriverManager.getConnection(CommonConstants.DB_URL, CommonConstants.DB_USERNAME,
+                CommonConstants.DB_PASSWORD);
+                PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
             preparedStatement.setString(1, seatClass);
             preparedStatement.setInt(2, FlightID);
@@ -339,7 +325,8 @@ public class Seats {
             }
 
         } catch (SQLException e) {
-            System.err.println("Error fetching minimum available SeatID for class '" + seatClass + "': " + e.getMessage());
+            System.err.println(
+                    "Error fetching minimum available SeatID for class '" + seatClass + "': " + e.getMessage());
             e.printStackTrace();
             return -1;
         }
@@ -350,7 +337,7 @@ public class Seats {
         String query = "SELECT SeatID, FlightID, Class, Position, Available, Price, UpdatedBy, UpdatedDate FROM seats WHERE SeatID = ?";
 
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
             // Set the seatID parameter
             preparedStatement.setInt(1, seatID);
@@ -381,7 +368,6 @@ public class Seats {
         return DriverManager.getConnection(
                 CommonConstants.DB_URL,
                 CommonConstants.DB_USERNAME,
-                CommonConstants.DB_PASSWORD
-        );
+                CommonConstants.DB_PASSWORD);
     }
 }
