@@ -205,54 +205,37 @@ public class Flights {
 
     public static ArrayList<ArrayList<Object>> viewFlight(String departureTime, String arrivalTime,
             String planeID, String departureCityName, String arrivalCityName) {
-        String viewFlightSQL = "SELECT f.FlightID, f.DepartureTime, f.ArrivalTime, f.PlaneID, " +
+
+        String baseSQL = "SELECT f.FlightID, f.DepartureTime, f.ArrivalTime, f.PlaneID, " +
                 "da.AirportName AS DepartureAirportName, aa.AirportName AS ArrivalAirportName, " +
                 "da.City AS DepartureCity, aa.City AS ArrivalCity " +
                 "FROM " + CommonConstants.DB_FLIGHTS_TABLE + " f " +
                 "JOIN " + CommonConstants.DB_AIRPORTS_TABLE + " da ON f.DepartureAirportID = da.AirportID " +
-                "JOIN " + CommonConstants.DB_AIRPORTS_TABLE + " aa ON f.ArrivalAirportID = aa.AirportID WHERE 1=1 ";
+                "JOIN " + CommonConstants.DB_AIRPORTS_TABLE + " aa ON f.ArrivalAirportID = aa.AirportID WHERE 1=1";
+
+        List<String> conditions = new ArrayList<>();
+        List<Object> parameters = new ArrayList<>();
+
+        addConditionAndParameter(conditions, parameters, "f.DepartureTime >= ?", departureTime);
+        addConditionAndParameter(conditions, parameters, "f.ArrivalTime <= ?", arrivalTime);
+        addConditionAndParameter(conditions, parameters, "f.PlaneID = ?", planeID);
+        addConditionAndParameter(conditions, parameters, "da.City LIKE ?",
+                departureCityName.isEmpty() ? "" : "%" + departureCityName + "%");
+        addConditionAndParameter(conditions, parameters, "aa.City LIKE ?",
+                arrivalCityName.isEmpty() ? "" : "%" + arrivalCityName + "%");
+
+        String finalSQL = baseSQL + String.join(" ", conditions);
 
         ArrayList<ArrayList<Object>> flightsList = new ArrayList<>();
-
-        if (!departureTime.isEmpty()) {
-            viewFlightSQL += " AND f.DepartureTime >= ? ";
-        }
-        if (!arrivalTime.isEmpty()) {
-            viewFlightSQL += " AND f.ArrivalTime <= ? ";
-        }
-        if (!planeID.isEmpty()) {
-            viewFlightSQL += " AND f.PlaneID = ? ";
-        }
-        if (!departureCityName.isEmpty()) {
-            viewFlightSQL += " AND da.City LIKE ? ";
-        }
-        if (!arrivalCityName.isEmpty()) {
-            viewFlightSQL += " AND aa.City LIKE ? ";
-        }
-
         try (Connection connection = DriverManager.getConnection(
                 CommonConstants.DB_URL, CommonConstants.DB_USERNAME, CommonConstants.DB_PASSWORD);
-                PreparedStatement viewFlightsStmt = connection.prepareStatement(viewFlightSQL)) {
+                PreparedStatement preparedStatement = connection.prepareStatement(finalSQL)) {
 
-            int index = 1;
-            if (!departureTime.isEmpty()) {
-                viewFlightsStmt.setString(index++, departureTime);
+            for (int i = 0; i < parameters.size(); i++) {
+                preparedStatement.setObject(i + 1, parameters.get(i));
             }
-            if (!arrivalTime.isEmpty()) {
-                viewFlightsStmt.setString(index++, arrivalTime);
-            }
-            if (!planeID.isEmpty()) {
-                viewFlightsStmt.setString(index++, planeID);
-            }
-            if (!departureCityName.isEmpty()) {
-                viewFlightsStmt.setString(index++, "%" + departureCityName + "%");
-            }
-            if (!arrivalCityName.isEmpty()) {
-                viewFlightsStmt.setString(index++, "%" + arrivalCityName + "%");
-            }
-            System.out.print(viewFlightSQL + " okokokoko ");
-            ResultSet resultSet = viewFlightsStmt.executeQuery();
 
+            ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 ArrayList<Object> flightData = new ArrayList<>();
                 flightData.add(resultSet.getInt("FlightID"));
@@ -271,6 +254,14 @@ public class Flights {
         }
 
         return flightsList;
+    }
+
+    private static void addConditionAndParameter(List<String> conditions, List<Object> parameters, String condition,
+            String value) {
+        if (!value.isEmpty()) {
+            conditions.add(" AND " + condition);
+            parameters.add(value);
+        }
     }
 
     public static boolean deleteFlight(int flightID) {
