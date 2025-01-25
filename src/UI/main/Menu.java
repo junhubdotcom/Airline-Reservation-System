@@ -242,7 +242,10 @@ public class Menu extends javax.swing.JFrame {
                 try {
                     lblHoSoMouseClicked(evt);
                 } catch (SQLException e) {
-                    throw new RuntimeException(e);
+                    JOptionPane.showMessageDialog(null, 
+                        "Error: Unable to process request", 
+                        "Database Error", 
+                        JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
