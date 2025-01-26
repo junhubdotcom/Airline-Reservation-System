@@ -29,6 +29,14 @@ public class editPlane extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        final javax.swing.JButton jButton1;
+        final javax.swing.JLabel jLabel1;
+        final javax.swing.JLabel jLabel2;
+        final javax.swing.JLabel jLabel3;
+        final javax.swing.JLabel jLabel4;
+        final javax.swing.JLabel jLabel5;
+        final javax.swing.JLabel jLabel6;
+        final javax.swing.JLabel jLabel7;
 
         jLabel3 = new javax.swing.JLabel();
         seat = new javax.swing.JTextField();
@@ -228,14 +236,6 @@ public class editPlane extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField admin;
     private javax.swing.JTextField airpotName;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextField model;
     private javax.swing.JTextField planeID;
